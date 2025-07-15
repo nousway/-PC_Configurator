@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Оптимальные игровые сборки ПК для CS2 и Dota 2. Бюджетные, средние и премиум варианты с гарантией FPS.">
+    <meta name="keywords" content="игровой пк, сборка пк, cs2, dota 2, asus rog, компьютер для игр">
+    <title>ROG PC Configurator Pro | Оптимальные сборки для CS2 и Dota 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        :root {
+            --rog-red: #e60808;
+            --rog-black: #0a0a0a;
+            --rog-dark: #1a1a1a;
+            --rog-gray: #333333;
+            --rog-light: #f0f0f0;
+            --rog-gold: #ffcc00;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Orbitron', 'Roboto', sans-serif;
+            background-color: var(--rog-black);
+            color: var(--rog-light);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--rog-black), var(--rog-dark));
+            border-bottom: 3px solid var(--rog-red);
+            padding: 30px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(230, 8, 8, 0.2);
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--rog-red), 
+                transparent);
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                opacity: 0.5;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .logo {
+            width: 120px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(230, 8, 8, 0.7));
+        }
+        
+        h1 {
+            color: var(--rog-red);
+            font-size: 2.5rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(230, 8, 8, 0.5);
+            animation: text-pulse 3s infinite;
+        }
+        
+        @keyframes text-pulse {
+            0% { text-shadow: 0 0 10px rgba(230, 8, 8, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(230, 8, 8, 0.8); }
+            100% { text-shadow: 0 0 10px rgba(230, 8, 8, 0.5); }
+        }
+        
+        h2 {
+            color: var(--rog-light);
+            font-size: 1.5rem;
+            margin: 10px 0 0;
+            font-weight: 300;
+        }
+        
+        h3 {
+            color: var(--rog-red);
+            border-bottom: 2px solid var(--rog-red);
+            padding-bottom: 5px;
+            font-size: 1.3rem;
+            display: inline-block;
+        }
+        
+        .pc-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .pc-option {
+            background-color: var(--rog-dark);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.6s forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .pc-option:nth-child(1) { animation-delay: 0.1s; }
+        .pc-option:nth-child(2) { animation-delay: 0.3s; }
+        .pc-option:nth-child(3) { animation-delay: 0.5s; }
+        
+        .pc-option:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(230, 8, 8, 0.3);
+        }
+        
+        .option-header {
+            background-color: var(--rog-red);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .option-header::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.7), 
+                transparent);
+        }
+        
+        .budget .option-header {
+            background: linear-gradient(135deg, var(--rog-gray), #4a4a4a);
+        }
+        
+        .mid .option-header {
+            background: linear-gradient(135deg, #8B0000, #a30000);
+        }
+        
+        .premium .option-header {
+            background: linear-gradient(135deg, var(--rog-red), #8B0000);
+        }
+        
+        .option-content {
+            padding: 25px;
+        }
+        
+        .specs {
+            margin-bottom: 25px;
+        }
+        
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--rog-gray);
+            transition: var(--transition);
+        }
+        
+        .spec-row:hover {
+            border-bottom-color: var(--rog-red);
+        }
+        
+        .spec-name {
+            color: var(--rog-light);
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .spec-name::before {
+            content: "•";
+            color: var(--rog-red);
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+        
+        .spec-value {
+            color: var(--rog-gold);
+            font-weight: bold;
+            text-align: right;
+        }
+        
+        .brand-icon {
+            margin-left: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .total-price {
+            font-size: 1.8rem;
+            color: var(--rog-gold);
+            text-align: center;
+            margin: 25px 0;
+            font-weight: bold;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .total-price::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 25%;
+            right: 25%;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--rog-gold), 
+                transparent);
+        }
+        
+        .pros-cons {
+            margin-top: 25px;
+        }
+        
+        .pros, .cons {
+            padding-left: 30px;
+            position: relative;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        
+        .pros::before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: #00ff00;
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+        
+        .cons::before {
+            content: "\f00d";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--rog-red);
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+        
+        .comparison {
+            background-color: var(--rog-dark);
+            padding: 30px;
+            border-radius: 8px;
+            margin: 50px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--rog-gray);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th {
+            background-color: var(--rog-red);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--rog-gray);
+            transition: var(--transition);
+        }
+        
+        tr:hover td {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+        
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .highlight {
+            color: var(--rog-gold);
+            font-weight: bold;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--rog-gray);
+            margin-top: 60px;
+            background: linear-gradient(180deg, var(--rog-dark), var(--rog-black));
+        }
+        
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--rog-red);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(230, 8, 8, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-btn::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                transparent,
+                transparent,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            transform: rotate(30deg);
+            transition: var(--transition);
+        }
+        
+        .contact-btn:hover {
+            background-color: #c50707;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(230, 8, 8, 0.6);
+        }
+        
+        .contact-btn:hover::before {
+            left: 100%;
+        }
+        
+        .contact-btn i {
+            margin-left: 10px;
+        }
+        
+        .guarantee-badge {
+            display: inline-block;
+            background-color: var(--rog-red);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        
+        .fps-badge {
+            display: inline-block;
+            background-color: var(--rog-gold);
+            color: var(--rog-black);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .modal-content {
+            background-color: var(--rog-dark);
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            border: 2px solid var(--rog-red);
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s;
+        }
+        
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: var(--rog-light);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .close-modal:hover {
+            color: var(--rog-red);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--rog-light);
+        }
+        
+        .form-group input, 
+        .form-group textarea, 
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--rog-gray);
+            border: 1px solid var(--rog-dark);
+            border-radius: 5px;
+            color: white;
+            font-family: inherit;
+        }
+        
+        .submit-btn {
+            background-color: var(--rog-red);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition);
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background-color: #c50707;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .pc-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.2rem;
+            }
+            
+            .option-content {
+                padding: 15px;
+            }
+            
+            .spec-name, .spec-value {
+                font-size: 0.9rem;
+            }
+            
+            .total-price {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="https://rog.asus.com/dist/img/rog-logo.png" alt="ROG Logo" class="logo">
+            <h1>ROG PC Configurator Pro</h1>
+            <h2>Оптимальные сборки для CS2 и Dota 2 (4:3 1200×960)</h2>
+            <div class="guarantee-badge">
+                <i class="fas fa-shield-alt"></i> Гарантия 2 года на все сборки
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="pc-options">
+            <!-- Бюджетный вариант -->
+            <div class="pc-option budget">
+                <div class="option-header">
+                    <h3>БЮДЖЕТНЫЙ ВАРИАНТ <span class="fps-badge">100+ FPS</span></h3>
+                    <p>Идеально для начинающих</p>
+                </div>
+                <div class="option-content">
+                    <div class="specs">
+                        <div class="spec-row">
+                            <span class="spec-name">Процессор:</span>
+                            <span class="spec-value">Intel Core i3-12100F <i class="fab fa-intel brand-icon"></i></span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-name">Видеокарта:</span>
+                            <span class="spec-value">NVIDIA GTX 1050 Ti <i class="fab fa-nvidia brand-icon"></i></span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-name">ОЗУ:</span>
+                            <span class="spec-value">16 GB DDR4 3200 MHz</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-name">SSD:</span>
+                            <span class="spec-value">1 TB Kingston NV2</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-name">Материнская плата:</span>
+                            <span class="spec-value">ASUS H610M-K <i class="fas fa-desktop brand-icon"></i></span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-name">Блок питания:</span>
+                            <span class="spec-value">500W 80+ Bronze</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-name">Корпус:</span>
+                            <span class="spec-value">Ginzzu A400</span>
+                        </div>
+                    </div>
+                    
+                    <div class="total-price">₸195 000</div>
+                    
+                    <div class="pros-cons">
+                        <div class="pros">Дешево, тянет CS2 и Dota 2 на 100+ FPS</div>
+                        <div class="pros">Достаточно для 4:3 1200×960</div>
+                        <div class="pros">Быстрый SSD на 1TB</div>
+                        <div class="cons">GTX 1050 Ti — слаба для новых AAA-игр</div>
+                        <div class="cons">Ограниченный апгрейд в будущем</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Средний вариант -->
+            <div class="pc-option mid">
+                <div class="option-header">
+                    <h3>СРЕДНИЙ ВАРИАНТ <span class="fps-badge">200+ FPS</span></h3>
+                    <p>Лучшее соотношение цены и качества</p>
+                </div>
+                <div class="option-content">
+                    <div class="specs">
+                        <div class="spec-row">
+                            <span class="spec-name">Процессор:</span>
+                            <span class="spec-value">AMD Ryzen 5 5600 <i class="fab fa-amd brand-icon"></i></span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-name">Видеокарта:</span>
+                            <span class="spec-value">NVIDIA GTX 1660 Super <i class="fab fa-nvidia brand-icon"></i></span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-name">ОЗУ:</span>
+                            <span class="spec-value">16 GB DDR4 3600 MHz</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-name">SSD:</span>
+                            <span class="spec-value">1 TB Samsung 980</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-name">Материнская плата:</span>
+                            <span class="spec-value">MSI B550-A PRO <i class="fas fa-desktop brand-icon"></i></span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-name">Блок питания:</span>
+                            <span class="spec-value">550W 80+ Gold</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-name">Корпус:</span>
+                            <span class="spec-value">Deepcool MATREXX 55</span>
+                        </div>
+                    </div>
+                    
+                    <div class="total-price">₸335 000</div>
+                    
+                    <div class="pros-cons">
+                        <div class="pros">GTX 1660 Super — плавный геймплей в CS2 (200+ FPS)</div>
+                        <div class="pros">Быстрый SSD Samsung 980</div>
+                        <div class="pros">Надежный блок питания 80+ Gold</div>
+                        <div class="cons">Нет Ray Tracing</div>
+                        <div class="cons">ОЗУ 16GB может быть мало для стриминга</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Премиум вариант -->
+            <div class="pc-option premium">
+                <div class="option-header">
+                    <h3>ПРЕМИУМ ВАРИАНТ <span class="fps-badge">300+ FPS</span></h3>
+                    <p>Максимальная производительность</p>
+                </div>
+                <div class="option-content">
+                    <div class="specs">
+                        <div class="spec-row">
+                            <span class="spec-name">Процессор:</span>
+                            <span class="spec-value">AMD Ryzen 7 5800X3D <i class="fab fa-amd brand-icon"></i></span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-name">Видеокарта:</span>
+                            <span class="spec-value">NVIDIA RTX 3060 Ti <i class="fab fa-nvidia brand-icon"></i></span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-name">ОЗУ:</span>
+                            <span class="spec-value">32 GB DDR4 3600 MHz</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-name">SSD:</span>
+                            <span class="spec-value">1 TB WD Black SN850X</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-name">Материнская плата:</span>
+                            <span class="spec-value">MSI B550-A PRO <i class="fas fa-desktop brand-icon"></i></span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-name">Блок питания:</span>
+                            <span class="spec-value">750W 80+ Platinum</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-name">Корпус:</span>
+                            <span class="spec-value">Lian Li Lancool 215</span>
+                        </div>
+                    </div>
+                    
+                    <div class="total-price">₸500 000</div>
+                    
+                    <div class="pros-cons">
+                        <div class="pros">RTX 3060 Ti — ультра-настройки в CS2 (300+ FPS)</div>
+                        <div class="pros">5800X3D — лучший игровой процессор для AM4</div>
+                        <div class="pros">Быстрый NVMe SSD WD Black</div>
+                        <div class="pros">Запас на 5+ лет</div>
+                        <div class="cons">Высокая цена</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="comparison">
+            <h3><i class="fas fa-chart-bar"></i> СРАВНЕНИЕ СБОРОК</h3>
+            <table>
+                <tr>
+                    <th>Параметр</th>
+                    <th>Бюджетная</th>
+                    <th>Средняя</th>
+                    <th>Премиум</th>
+                </tr>
+                <tr>
+                    <td>Цена</td>
+                    <td class="highlight">₸195 000</td>
+                    <td class="highlight">₸335 000</td>
+                    <td class="highlight">₸500 000</td>
+                </tr>
+                <tr>
+                    <td>FPS в CS2</td>
+                    <td>100+</td>
+                    <td>200+</td>
+                    <td>300+</td>
+                </tr>
+                <tr>
+                    <td>Графика</td>
+                    <td>Средняя</td>
+                    <td>Высокая</td>
+                    <td>Ультра + RTX</td>
+                </tr>
+                <tr>
+                    <td>Апгрейд</td>
+                    <td>Ограничен</td>
+                    <td>Оптимален</td>
+                    <td>Максимален</td>
+                </tr>
+                <tr>
+                    <td>Гарантия</td>
+                    <td>2 года</td>
+                    <td>2 года</td>
+                    <td>2 года</td>
+                </tr>
+            </table>
+        </div>
+        
+        <footer>
+            <h3>ГОТОВЫ К ИГРАМ НА МАКСИМУМАХ?</h3>
+            <p>Оставьте заявку и мы соберем ваш идеальный ПК за 3 дня!</p>
+            <a href="#" class="contact-btn" id="order-btn">
+                ЗАКАЗАТЬ СБОРКУ <i class="fas fa-arrow-right"></i>
+            </a>
+            <div style="margin-top: 30px;">
+                <a href="#" style="color: var(--rog-light); margin: 0 10px;"><i class="fab fa-vk"></i></a>
+                <a href="#" style="color: var(--rog-light); margin: 0 10px;"><i class="fab fa-telegram"></i></a>
+                <a href="#" style="color: var(--rog-light); margin: 0 10px;"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Модальное окно -->
+    <div class="modal" id="order-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 style="margin-top: 0;"><i class="fas fa-desktop"></i> ЗАКАЗАТЬ СБОРКУ</h3>
+            <form id="order-form">
+                <div class="form-group">
+                    <label for="name">Ваше имя:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Телефон:</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="config">Выберите сборку:</label>
+                    <select id="config" required>
+                        <option value="">-- Выберите вариант --</option>
+                        <option value="budget">Бюджетная (₸195 000)</option>
+                        <option value="mid">Средняя (₸335 000)</option>
+                        <option value="premium">Премиум (₸500 000)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Дополнительные пожелания:</label>
+                    <textarea id="message" rows="4"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">ОТПРАВИТЬ ЗАЯВКУ <i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        // Анимация появления карточек
+        document.addEventListener('DOMContentLoaded', function() {
+            // Модальное окно
+            const modal = document.getElementById('order-modal');
+            const btn = document.getElementById('order-btn');
+            const closeBtn = document.querySelector('.close-modal');
+            
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            closeBtn.addEventListener('click', function() {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+            
+            window.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            // Форма
+            const form = document.getElementById('order-form');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Спасибо за заявку! Мы свяжемся с вами в ближайшее время.');
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+                form.reset();
+            });
+        });
+    </script>
+</body>
+</html>
