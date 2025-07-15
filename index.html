@@ -39,7 +39,7 @@
         }
         
         header {
-            background: linear-gradient(135deg, var(--rog-black), var(--rog-dark));
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
             border-bottom: 3px solid var(--rog-red);
             padding: 30px 0;
             text-align: center;
@@ -70,12 +70,43 @@
                 opacity: 1;
             }
         }
-        
-        .logo {
-            width: 120px;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 10px rgba(230, 8, 8, 0.7));
-        }
+
+        .logo-text {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.logo-title {
+    display: block;
+    font-size: 2.2rem;
+    color: var(--rog-gold);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+    animation: glow-gold 2s infinite alternate;
+}
+@keyframes glow-gold {
+    from { text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+    to { text-shadow: 0 0 20px rgba(255, 215, 0, 0.9); }
+}
+
+.logo-subtitle {
+    display: block;
+    font-size: 1.8rem;
+    color: white;
+    letter-spacing: 2px;
+    margin-top: -5px;
+}
+
+.logo-tagline {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--rog-light);
+    letter-spacing: 8px;
+    margin-top: 5px;
+    opacity: 0.8;
+}
         
         h1 {
             color: var(--rog-red);
@@ -565,15 +596,20 @@
 </head>
 <body>
     <header>
-        <div class="container">
-            <img src="https://rog.asus.com/dist/img/rog-logo.png" alt="ROG Logo" class="logo">
-            <h1>PC Configurator Pro</h1>
-            <h2>Оптимальные сборки для CS2 и Dota 2 (4:3 1200×960)</h2>
-            <div class="guarantee-badge">
-                <i class="fas fa-shield-alt"></i> Гарантия 2 года на все сборки
-            </div>
+    <div class="container">
+            <div class="logo-text">
+            <span class="logo-title">TITANIUM</span>
+            <span class="logo-subtitle">CORE</span>
+            <span class="logo-tagline">СОВЕРШЕНСТВО</span>
         </div>
-    </header>
+
+        <h1>PC Configurator Pro</h1>
+        <h2>Оптимальные сборки для CS2 и Dota 2 (4:3 1200×960)</h2>
+        <div class="guarantee-badge">
+            <i class="fas fa-shield-alt"></i> Гарантия 2 года на все сборки
+        </div>
+    </div>
+</header>
     
     <div class="container">
         <div class="pc-options">
