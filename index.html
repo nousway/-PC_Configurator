@@ -444,9 +444,9 @@
             margin-left: 10px;
             vertical-align: middle;
         }
-        
+
         .modal {
-            display: none;
+            display: none; /* Скрыто по умолчанию */
             position: fixed;
             top: 0;
             left: 0;
@@ -456,37 +456,30 @@
             z-index: 1000;
             justify-content: center;
             align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s;
+        }
+        
+        .modal.active {
+            display: flex; /* Показываем при активации */
         }
         
         .modal-content {
             background-color: var(--rog-dark);
-            padding: 30px;
+            padding: 20px;
             border-radius: 10px;
-            max-width: 500px;
+            max-width: 700px;
             width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
             border: 2px solid var(--rog-red);
             position: relative;
-            transform: scale(0.9);
-            transition: transform 0.3s;
-        }
-        
-        .modal.active {
-            display: flex;
-            opacity: 1;
-        }
-        
-        .modal.active .modal-content {
-            transform: scale(1);
         }
         
         .close-modal {
             position: absolute;
             top: 15px;
             right: 15px;
-            font-size: 1.5rem;
             color: var(--rog-light);
+            font-size: 1.5rem;
             cursor: pointer;
             transition: var(--transition);
         }
@@ -587,7 +580,7 @@
             <!-- Бюджетный вариант -->
             <div class="pc-option budget">
                 <div class="option-header">
-                    <h2>БЮДЖЕТНЫЙ ВАРИАНТ <span class="fps-badge">100+ FPS</span></h2>
+                    <h3>БЮДЖЕТНЫЙ ВАРИАНТ <span class="fps-badge">100+ FPS</span></h3>
                     <p>Идеально для начинающих</p>
                 </div>
                 <div class="option-content">
@@ -637,7 +630,7 @@
             <!-- Средний вариант -->
             <div class="pc-option mid">
                 <div class="option-header">
-                    <h2>СРЕДНИЙ ВАРИАНТ <span class="fps-badge">200+ FPS</span></h2>
+                    <h3>СРЕДНИЙ ВАРИАНТ <span class="fps-badge">200+ FPS</span></h3>
                     <p>Лучшее соотношение цены и качества</p>
                 </div>
                 <div class="option-content">
@@ -687,7 +680,7 @@
             <!-- Премиум вариант -->
             <div class="pc-option premium">
                 <div class="option-header">
-                    <h2>ПРЕМИУМ ВАРИАНТ <span class="fps-badge">300+ FPS</span></h2>
+                    <h3>ПРЕМИУМ ВАРИАНТ <span class="fps-badge">300+ FPS</span></h3>
                     <p>Максимальная производительность</p>
                 </div>
                 <div class="option-content">
@@ -736,7 +729,7 @@
         </div>
         
         <div class="comparison">
-            <h3><i class="fas fa-chart-bar"></i> СРАВНЕНИЕ СБОРОК</h3>
+            <h2><i class="fas fa-chart-bar"></i> СРАВНЕНИЕ СБОРОК</h2>
             <table>
                 <thead>
                     <tr>
@@ -783,7 +776,7 @@
         </div>
         
         <footer>
-            <h3>ГОТОВЫ К ИГРАМ НА МАКСИМУМАХ?</h3>
+            <h2>ГОТОВЫ К ИГРАМ НА МАКСИМУМАХ?</h2>
             <p>Оставьте заявку и мы соберем ваш идеальный ПК за 3 дня!</p>
             <a href="#" class="contact-btn" id="order-btn">
                 ЗАКАЗАТЬ СБОРКУ <i class="fas fa-arrow-right"></i>
@@ -834,16 +827,32 @@
                 }
             });
             
-            // Форма
-            const form = document.getElementById('order-form');
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Спасибо за заявку! Мы свяжемся с вами в ближайшее время.');
-                modal.classList.remove('active');
-                document.body.style.overflow = '';
-                form.reset();
-            });
-        });
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('order-modal');
+    const btn = document.getElementById('order-btn');
+    const closeBtn = document.querySelector('.close-modal');
+
+    // Открытие модального окна
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Блокируем прокрутку страницы
+    });
+
+    // Закрытие модального окна
+    closeBtn.addEventListener('click', function() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    // Закрытие при клике вне формы
+    window.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+});
     </script>
 </body>
 </html>
