@@ -101,7 +101,7 @@
         }
         
         h3 {
-            color: var(--rog-red);
+            color: #fdfdfd;
             border-bottom: 2px solid var(--rog-red);
             padding-bottom: 5px;
             font-size: 1.3rem;
@@ -574,7 +574,7 @@
     <header>
         <div class="container">
             <img src="https://rog.asus.com/dist/img/rog-logo.png" alt="ROG Logo" class="logo">
-            <h1>ROG PC Configurator Pro</h1>
+            <h1>PC Configurator Pro</h1>
             <h2>Оптимальные сборки для CS2 и Dota 2 (4:3 1200×960)</h2>
             <div class="guarantee-badge">
                 <i class="fas fa-shield-alt"></i> Гарантия 2 года на все сборки
@@ -587,7 +587,7 @@
             <!-- Бюджетный вариант -->
             <div class="pc-option budget">
                 <div class="option-header">
-                    <h3>БЮДЖЕТНЫЙ ВАРИАНТ <span class="fps-badge">100+ FPS</span></h3>
+                    <h2>БЮДЖЕТНЫЙ ВАРИАНТ <span class="fps-badge">100+ FPS</span></h2>
                     <p>Идеально для начинающих</p>
                 </div>
                 <div class="option-content">
@@ -637,7 +637,7 @@
             <!-- Средний вариант -->
             <div class="pc-option mid">
                 <div class="option-header">
-                    <h3>СРЕДНИЙ ВАРИАНТ <span class="fps-badge">200+ FPS</span></h3>
+                    <h2>СРЕДНИЙ ВАРИАНТ <span class="fps-badge">200+ FPS</span></h2>
                     <p>Лучшее соотношение цены и качества</p>
                 </div>
                 <div class="option-content">
@@ -687,7 +687,7 @@
             <!-- Премиум вариант -->
             <div class="pc-option premium">
                 <div class="option-header">
-                    <h3>ПРЕМИУМ ВАРИАНТ <span class="fps-badge">300+ FPS</span></h3>
+                    <h2>ПРЕМИУМ ВАРИАНТ <span class="fps-badge">300+ FPS</span></h2>
                     <p>Максимальная производительность</p>
                 </div>
                 <div class="option-content">
@@ -797,41 +797,17 @@
     </div>
     
     <!-- Модальное окно -->
-    <div class="modal" id="order-modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h3 style="margin-top: 0;"><i class="fas fa-desktop"></i> ЗАКАЗАТЬ СБОРКУ</h3>
-            <form id="order-form">
-                <div class="form-group">
-                    <label for="name">Ваше имя:</label>
-                    <input type="text" id="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Телефон:</label>
-                    <input type="tel" id="phone" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email">
-                </div>
-                <div class="form-group">
-                    <label for="config">Выберите сборку:</label>
-                    <select id="config" required>
-                        <option value="">-- Выберите вариант --</option>
-                        <option value="budget">Бюджетная (₸195 000)</option>
-                        <option value="mid">Средняя (₸335 000)</option>
-                        <option value="premium">Премиум (₸500 000)</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="message">Дополнительные пожелания:</label>
-                    <textarea id="message" rows="4"></textarea>
-                </div>
-                <button type="submit" class="submit-btn">ОТПРАВИТЬ ЗАЯВКУ <i class="fas fa-paper-plane"></i></button>
-            </form>
-        </div>
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdw80y5uP0N62zFEYNe1HcfLb7svEefMlo8NmErw63Kpkta7w/viewform?embedded=true" 
+            width="640" 
+            height="1043" 
+            frameborder="0" 
+            marginheight="0" 
+            marginwidth="0"
+        >Загрузка…</iframe>
     </div>
-    
+
     <script>
         // Анимация появления карточек
         document.addEventListener('DOMContentLoaded', function() {
