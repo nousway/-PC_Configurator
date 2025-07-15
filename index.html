@@ -739,7 +739,6 @@
                         <th>Премиум</th>
                     </tr>
                 </thead>
-                    
                 <tbody>
             <tr>
                 <td>Цена</td>
@@ -759,7 +758,6 @@
                 <td>Высокая</td>
                 <td>Ультра + RTX</td>
             </tr>
-        </tbody>
                 <tr>
                     <td>Апгрейд</td>
                     <td>Ограничен</td>
@@ -772,6 +770,7 @@
                     <td>2 года</td>
                     <td>2 года</td>
                 </tr>
+                </tbody>
             </table>
         </div>
         
@@ -790,43 +789,15 @@
     </div>
     
     <!-- Модальное окно -->
+<div class="modal" id="order-modal">
     <div class="modal-content">
         <span class="close-modal">&times;</span>
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdw80y5uP0N62zFEYNe1HcfLb7svEefMlo8NmErw63Kpkta7w/viewform?embedded=true" 
-            width="640" 
-            height="1043" 
-            frameborder="0" 
-            marginheight="0" 
-            marginwidth="0"
-        >Загрузка…</iframe>
+        <iframe src="https://docs.google.com/forms/..." width="100%" height="600" frameborder="0"></iframe>
     </div>
+</div>
 
     <script>
-        // Анимация появления карточек
-        document.addEventListener('DOMContentLoaded', function() {
-            // Модальное окно
-            const modal = document.getElementById('order-modal');
-            const btn = document.getElementById('order-btn');
-            const closeBtn = document.querySelector('.close-modal');
-            
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-            
-            closeBtn.addEventListener('click', function() {
-                modal.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-            
-            window.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
-            });
-            
+        // Анимация появления карточек            
 document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('order-modal');
     const btn = document.getElementById('order-btn');
